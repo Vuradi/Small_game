@@ -13,7 +13,7 @@ body {
   align-items: center;
   padding: 20px;
   overflow: hidden;
-  background: linear-gradient(#CB356B, #BD3F32);
+  background: linear-gradient(#3550cb, #32adbd);
 }
 
 .app {
@@ -82,7 +82,7 @@ body {
   align-items: center;
   justify-content: center;
   border: 1px solid #ccc;
-  background: #ccc;
+  background: linear-gradient(#3550cb, #32adbd);
   min-height: 300px;
   min-width: 300px;
   max-width: 300px;
@@ -109,19 +109,12 @@ body {
   touch-action: manipulation;
   cursor: pointer;
   user-select: none;
-  background: #fad64e;
-  color: #3f3f3f;
+  background: #2b281d;
+  color: #ffffff;
   border: none;
   border-radius: 2.8rem;
   transition: transform .2s ease-in-out,box-shadow .2s ease-in-out,-webkit-transform .2s ease-in-out,-webkit-box-shadow .2s ease-in-out;
   will-change: transform;
-}
-
-.btn:disabled {
-  background: #ccc!important;
-  border: 1px solid #ccc;
-  color: #000;
-  cursor: not-allowed;
 }
 
 .btn:active {

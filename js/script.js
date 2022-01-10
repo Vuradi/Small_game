@@ -28,7 +28,7 @@ function startGame() {
     setGameTime();
     inputTime.setAttribute('disabled', 'true');
     isGameStarted = true;
-    gameField.style.backgroundColor = '#fff';
+    gameField.style.background = 'white';
     hide(btnStart);
 
     let interval = setInterval(function() {
@@ -62,7 +62,7 @@ function endGame() {
     inputTime.removeAttribute('disabled');
     show(btnStart);
     gameField.innerHTML = ''
-    gameField.style.backgroundColor = '#ccc';
+    gameField.style.background = 'linear-gradient(#3550cb, #32adbd)';
     hide(timeHeader);
     show(resultHeader);
 }
