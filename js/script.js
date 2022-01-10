@@ -3,6 +3,9 @@
 const btnStart = document.querySelector('#start');
 const gameField = document.querySelector('#game');
 let time = document.querySelector('#time');
+let result = document.querySelector('#result')
+const timeHeader = document.querySelector('#time-header');
+const resultHeader = document.querySelector('#result-header')
 
 let score = 0;
 let isGameStarted = false;
@@ -11,6 +14,10 @@ btnStart.addEventListener('click', startGame);
 gameField.addEventListener('click', handlerBoxClick);
 
 function startGame() {
+    score = 0;
+    setGameTime();
+    timeHeader.classList.remove('hide');
+    resultHeader.classList.add('hide');
     isGameStarted = true;
     gameField.style.backgroundColor = '#fff';
     btnStart.classList.add('hide');
@@ -29,8 +36,23 @@ function startGame() {
     renderBox()
 }
 
+function setGameScore() {
+    result.textContent = score.toString();
+}
+
+function setGameTime() {
+    const initTime = 5;
+    time.textContent = initTime.toFixed(1);
+}
+
 function endGame() {
     isGameStarted = false;
+    setGameScore();
+    btnStart.classList.remove('hide');
+    gameField.innerHTML = ''
+    gameField.style.backgroundColor = '#ccc';
+    timeHeader.classList.add('hide');
+    resultHeader.classList.remove('hide');
 }
 
 function handlerBoxClick(event) {
