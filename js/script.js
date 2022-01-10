@@ -5,22 +5,31 @@ const gameField = document.querySelector('#game');
 let time = document.querySelector('#time');
 let result = document.querySelector('#result')
 const timeHeader = document.querySelector('#time-header');
-const resultHeader = document.querySelector('#result-header')
+const resultHeader = document.querySelector('#result-header');
+const inputTime = document.querySelector('#game-time');
 
 let score = 0;
 let isGameStarted = false;
 
 btnStart.addEventListener('click', startGame);
 gameField.addEventListener('click', handlerBoxClick);
+inputTime.addEventListener('input', setGameTime);
+
+function show(element) {
+    element.classList.remove('hide');
+}
+
+function hide(element) {
+    element.classList.add('hide');
+}
 
 function startGame() {
     score = 0;
     setGameTime();
-    timeHeader.classList.remove('hide');
-    resultHeader.classList.add('hide');
+    inputTime.setAttribute('disabled', 'true');
     isGameStarted = true;
     gameField.style.backgroundColor = '#fff';
-    btnStart.classList.add('hide');
+    hide(btnStart);
 
     let interval = setInterval(function() {
         let timer = parseFloat(time.textContent);
@@ -41,18 +50,21 @@ function setGameScore() {
 }
 
 function setGameTime() {
-    const initTime = 5;
+    const initTime = +inputTime.value;
     time.textContent = initTime.toFixed(1);
+    show(timeHeader);
+    hide(resultHeader);
 }
 
 function endGame() {
     isGameStarted = false;
     setGameScore();
-    btnStart.classList.remove('hide');
+    inputTime.removeAttribute('disabled');
+    show(btnStart);
     gameField.innerHTML = ''
     gameField.style.backgroundColor = '#ccc';
-    timeHeader.classList.add('hide');
-    resultHeader.classList.remove('hide');
+    hide(timeHeader);
+    show(resultHeader);
 }
 
 function handlerBoxClick(event) {
