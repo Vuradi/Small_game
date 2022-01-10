@@ -2,19 +2,42 @@
 
 const btnStart = document.querySelector('#start');
 const gameField = document.querySelector('#game');
+let time = document.querySelector('#time');
+
 let score = 0;
+let isGameStarted = false;
 
 btnStart.addEventListener('click', startGame);
 gameField.addEventListener('click', handlerBoxClick);
 
 function startGame() {
+    isGameStarted = true;
     gameField.style.backgroundColor = '#fff';
     btnStart.classList.add('hide');
+
+    let interval = setInterval(function() {
+        let timer = parseFloat(time.textContent);
+
+        if (timer <= 0) {
+            clearInterval(interval);
+            endGame();
+        } else {
+            time.textContent = (timer - 0.1).toFixed(1);
+        }
+    }, 100)
 
     renderBox()
 }
 
+function endGame() {
+    isGameStarted = false;
+}
+
 function handlerBoxClick(event) {
+    if (!isGameStarted) {
+        return
+    }
+
     if (event.target.dataset.box) {
         score++;
         renderBox();
