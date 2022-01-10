@@ -88,7 +88,7 @@ function renderBox() {
 
     box.style.height = box.style.width = boxSize + 'px';
     box.style.position = 'absolute';
-    box.style.backgroundColor = '#000';
+    box.style.backgroundColor = `rgb(${getRandom(0, 255)}, ${getRandom(0, 255)}, ${getRandom(0, 255)})`;
     box.style.top = getRandom(0, maxTop) + 'px';
     box.style.left = getRandom(0, maxLeft) + 'px';
     box.style.cursor = 'pointer';
